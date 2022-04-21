@@ -9,7 +9,7 @@
     "tsConfigPath": "apps/api/tsconfig.app.json"
   },
   "projects": {
-    "monorepo": {
+    "api": {
       "type": "application",
       "root": "apps/api",
       "entryFile": "main",

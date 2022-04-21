@@ -9,7 +9,7 @@ const configs: TypeOrmModuleOptions & { seeds: string[], factories: string[] } =
     database: process.env.DB_DATABASE,
     entities: ['modules/**/*.entity{.ts,.js}'],
     migrations: ['database/migrations/*{.ts,.js}'],
-    seeds: ['database/seeds/**/*{.ts,.js}'],
+    seeds: ['database/seeders/**/*{.ts,.js}'],
     factories: ['database/factories/**/*{.ts,.js}'],
     cli: {
         migrationsDir: 'database/migrations'
