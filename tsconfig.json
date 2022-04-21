@@ -21,6 +21,9 @@
       "apps/*": [
         "./apps/*"
       ],
+      "modules/*": [
+        "./modules/*"
+      ]
     }
   }
 }
