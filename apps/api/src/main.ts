@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { TransformDataInterceptor } from './interceptors/transform-data.interceptor';
+import { TransformDataInterceptor } from 'common/interceptors/transform-data.interceptor';
 import { ApiModule } from './modules/api.module';
 
 async function bootstrap() {
