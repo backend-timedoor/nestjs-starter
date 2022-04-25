@@ -5,9 +5,20 @@ import { WebModule } from './modules/web.module';
 import * as csrf from 'csurf';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
+import { BadRequestException, ValidationError, ValidationPipe } from '@nestjs/common';
+import { BadRequestExceptionFilter } from 'common/exception-filter/bad-request-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(WebModule);
+
+  app.useGlobalPipes(new ValidationPipe({
+    stopAtFirstError: true,
+    exceptionFactory: (errors: ValidationError[] = []) => {
+      return new BadRequestException(errors);
+    }
+  }));
+
+  app.useGlobalFilters(new BadRequestExceptionFilter());
 
   setupCsrf(app);
   setupViewEngine(app);
