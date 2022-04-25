@@ -5,6 +5,8 @@ export function svelteTemplateEngine(filePath: string, options: any, next: any) 
 
     const Component = require(`.${file.replace(/\\/g, "/")}`).default;
 
-    const { html } = Component.render(options);
+    const { html } = Component.render({
+        props: options
+    });
     next(null, html);
 }
