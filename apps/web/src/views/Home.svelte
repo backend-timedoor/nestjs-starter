@@ -1,4 +1,4 @@
 <script>
-    export let message;
+    export let props;
 </script>
-<h1>{message}</h1>
+<h1>{props.message}</h1>
