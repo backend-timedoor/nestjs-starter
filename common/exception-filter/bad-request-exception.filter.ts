@@ -18,9 +18,11 @@ export class BadRequestExceptionFilter implements ExceptionFilter {
     private serializeMessage(response: ValidationError[]) {
         const result = {};
 
-        response.forEach((message) => {
-            result[message.property] = Object.values(message.constraints)[0]
-        })
+        if (typeof response == 'object') {
+            response.forEach((message) => {
+                result[message.property] = Object.values(message.constraints)[0]
+            })
+        }
 
         return result;
     }
