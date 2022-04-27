@@ -7,6 +7,7 @@ import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 import { BadRequestException, ValidationError, ValidationPipe } from '@nestjs/common';
 import { BadRequestExceptionFilter } from 'common/exception-filter/bad-request-exception.filter';
+import { HttpExceptionFilter } from 'common/exception-filter/http-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(WebModule);
@@ -18,7 +19,7 @@ async function bootstrap() {
     }
   }));
 
-  app.useGlobalFilters(new BadRequestExceptionFilter());
+  app.useGlobalFilters(new HttpExceptionFilter(), new BadRequestExceptionFilter());
 
   setupCsrf(app);
   setupViewEngine(app);
